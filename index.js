@@ -51,6 +51,26 @@ async function run() {
 
         //Update
         app.get('/service/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await inventroyCollection.findOne(query);
+            res.send(result);
+        });
+        // update PUT
+        app.put('/service/:id', async (req, res) => {
+            const id = req.params.id;
+            const data = req.body;
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    name: data.name,
+                    email: data.email,
+                    stock: data.stock
+                }
+            };
+            const result = await inventroyCollection.updateOne(filter, updateDoc, options);
+            res.send(result);
 
         })
 
