@@ -74,6 +74,15 @@ async function run() {
 
         })
 
+        //my order Api 
+        app.get('/service', async (req, res) => {
+            const email = req.query.email;
+            const query = { email: email };
+            const cursor = inventroyCollection.find(query);
+            const order = await cursor.toArray();
+            res.send(order);
+        })
+
     }
     finally {
 
