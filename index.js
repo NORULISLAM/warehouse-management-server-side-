@@ -49,6 +49,11 @@ async function run() {
             res.send(result);
         });
 
+        //Update
+        app.get('/service/:id', async (req, res) => {
+
+        })
+
     }
     finally {
 
