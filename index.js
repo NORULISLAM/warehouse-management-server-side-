@@ -74,7 +74,7 @@ async function run() {
 
         })
 
-        //my order Api 
+        //my order Api call
         app.get('/service', async (req, res) => {
             const email = req.query.email;
             const query = { email: email };
